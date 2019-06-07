@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,8 +58,11 @@ public class DesignTacoController {
 	
 	
 	@PostMapping
-	public String processDesign(@ModelAttribute Taco design) {
-
+	public String processDesign(@ModelAttribute @Valid Taco design, Errors errors) {
+		
+		if(errors.hasErrors()) {
+			return "redirect:/design";
+		}
 		
 		
 		return "redirect:/orders/current";

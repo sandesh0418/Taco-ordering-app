@@ -4,6 +4,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Order form</title>
+<style>
+span{
+color: red;}
+</style>
 </head>
 <body>
 
@@ -21,25 +25,59 @@ Please correct the errors and resubmit the form
 </div>
 <h3>Deliver my taco masterpiece to...</h3>
 <label for="name">Name: </label>
-<input th:field="*{name}" type="text" placeholder="Please enter your name"/><br/><br/>
+<input th:field="*{name}" type="text" placeholder="Please enter your name"/>
+<span class="validationError"
+	th:if="${#fields.hasErrors('name')}"
+	th:errors="*{name}">Name</span>
+
+<br/><br/>
 <label for="street">Street name:  </label>
-<input th:field="*{street}" type="text" placeholder="Please enter the street name"/><br/><br/>
+<input th:field="*{street}" type="text" placeholder="Please enter the street name"/>
+<span class="validationError"
+	th:if="${#fields.hasErrors('street')}"
+	th:errors="*{street}">Street</span>
+<br/><br/>
 <label for="city">City: </label>
-<input th:field="*{city}" type="text" placeholder="Please enter the city name"/><br/><br/>
+<input th:field="*{city}" type="text" placeholder="Please enter the city name"/>
+<span class="validationError"
+	th:if="${#fields.hasErrors('city')}"
+	th:errors="*{city}">City</span>
+<br/><br/>
 <label for="state">State: </label>
-<input th:field="*{state}" type="text" placeholder="Please enter the state name"/><br/><br/>
+<input th:field="*{state}" type="text" placeholder="Please enter the state name"/>
+<span class="validationError"
+	  th:if="${#fields.hasErrors('state')}"
+	  th:errors="*{state}">State</span>
+
+<br/><br/>
 <label for="zip">Zip code: </label>
-<input th:field="*{zip}" type="text" placeholder="Please enter the zip code"/><br/><br/>
+<input th:field="*{zip}" type="text" placeholder="Please enter the zip code"/>
+<span class ="validationError"
+	th:if="${#fields.hasErrors('zip')}"
+	th:errors="*{zip}">Zip</span>
+<br/><br/>
 
 </div>
 <div class="creditCardInfo">
 <h3>Here is how I'll pay</h3>
 <label for="creditNum">Credit Card Number: </label>
-<input th:field="*{creditNum}" type="text" placeholder="Please enter your credit card number"/><br/><br/>
+<input th:field="*{creditNum}" type="text" placeholder="Please enter your credit card number"/>
+<span class="validationError"
+		th:if="${#fields.hasErrors('creditNum')}"
+		th:errors="*{creditNum}">CC Num Error</span><br/><br/>
 <label for="ccExpiration">Expiration Date: </label>
-<input th:field="*{ccExpiration}" type="text" placeholder="ex: 08/19"/><br/><br/>
+<input th:field="*{ccExpiration}" type="text" placeholder="ex: 08/19"/>
+<span class="validationError"
+		th:if="${#fields.hasErrors('ccExpiration')}"
+		th:errors="*{ccExpiration}">CC expiration error</span>
+<br/><br/>
 <label for="ccCCV">Security code: </label>
-<input th:field="*{ccCCV}" type="text" placeholder="CCV"/><br/><br/>
+<input th:field="*{ccCCV}" type="text" placeholder="CCV"/>
+<span class="validationError"
+		th:if="${#fields.hasErrors('ccCCV')}"
+		th:errors="*{ccCCV}">CCV error</span>
+
+<br/><br/>
 
 
 

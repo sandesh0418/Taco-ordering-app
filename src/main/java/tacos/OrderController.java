@@ -1,7 +1,10 @@
 package tacos;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +22,12 @@ public class OrderController {
 	}
 	
 	@PostMapping
-	public String postOrder(@ModelAttribute Order order) {
+	public String postOrder(@ModelAttribute @Valid Order order, Errors errors) {
 		
-		System.out.print(order.getCreditNum());
-		return "redirect:/design";
+		if(errors.hasErrors()) {
+			return "orderForm";
+		}
+		
+		return "redirect:/";
 	}
 }
